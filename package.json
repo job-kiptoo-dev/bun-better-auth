@@ -5,13 +5,15 @@
     "db:up": "docker compose up -d",
     "db:generate:migration": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "open-auth-doc": "open-cli http://localhost:3000/api/auth/reference"
   },
   "dependencies": {
     "better-auth": "^1.4.19",
     "drizzle-orm": "^0.45.1",
     "drizzle-seed": "^0.3.1",
     "hono": "^4.12.2",
+    "open-cli": "^8.0.0",
     "pg": "^8.18.0"
   },
   "devDependencies": {

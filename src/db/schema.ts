@@ -1,6 +1,22 @@
 
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, uuid, varchar } from "drizzle-orm/pg-core";
+
+
+
+
+
+export const todos = pgTable("todos", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+  title: varchar({ length: 500 }).notNull(),
+  description: varchar({ length: 1000 }),
+  completed: boolean("completed").default(false).notNull(),
+  createdAt: timestamp({ withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp({ withTimezone: true }).defaultNow()
+});
+
+
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
